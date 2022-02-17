@@ -76,7 +76,6 @@ def introducir_usuario():
                     print "=============="
                     break
     print "=============="
-    return usuario
 
 
 
@@ -93,7 +92,6 @@ def introducir_nombre():
                     break
                 condiciones_nombre = True
     print "=============="
-    return nombre
 
 
 
@@ -110,7 +108,6 @@ def introducir_apellido():
                     break
                 condiciones_apellido = True
     print "=============="
-    return apellido
 
 
 
@@ -163,7 +160,6 @@ def introducir_correo():
             else:
                 condiciones_correo = check_email(correo)
     print "=============="
-    return correo
 
 
 
@@ -179,7 +175,6 @@ def introducir_contrasena():
         contrasena = raw_input("Escribe tu contrasena: ")
         confirma_contrasena = raw_input("Confirma tu contrasena: ")
     print "=============="
-    return contrasena
 
 
 

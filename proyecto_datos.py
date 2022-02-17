@@ -1,9 +1,4 @@
 from funciones_proyecto_datos import *
-usuario = ""
-nombre = ""
-apellido = ""
-correo = ""
-contrasena = ""
 
 #PRINCIPAL:
 #Menu para introducir respuesta.
