@@ -11,8 +11,8 @@ apellido = ""
 correo = ""
 contrasena = ""
 
-ruta_txt = "PROYECTO DATOS [python]\\archivo_proyecto_datos.txt"
-ruta_json = "PROYECTO DATOS [python]\\archivo_proyecto_datos_json.json"
+ruta_txt = "archivo_proyecto_datos.txt"
+ruta_json = "archivo_proyecto_datos_json.json"
 
 #FUNCIONES:
 #Adquire los datos del archivo TXT.
