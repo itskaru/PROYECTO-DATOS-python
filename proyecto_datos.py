@@ -12,14 +12,15 @@ if respuesta_info == "1":
 #Introducir datos:
 elif respuesta_info == "2":
     print "=============="
+    condiciones_ciclo = False
     while condiciones_ciclo == False:
         introducir_usuario()
         introducir_nombre()
         introducir_apellido()
         introducir_correo()
         introducir_contrasena()
-        confirmar_datos()
-        
+        condiciones_ciclo = confirmar_datos()   
+
     guardar_datos()  
         
     
