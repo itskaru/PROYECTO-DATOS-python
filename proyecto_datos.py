@@ -13,11 +13,11 @@ if respuesta_info == "1":
 elif respuesta_info == "2":
     print "=============="
     while condiciones_ciclo == False:
-        usuario = introducir_usuario()
-        nombre = introducir_nombre()
-        apellido = introducir_apellido()
-        correo = introducir_correo()
-        contrasena = introducir_contrasena()
+        introducir_usuario()
+        introducir_nombre()
+        introducir_apellido()
+        introducir_correo()
+        introducir_contrasena()
         confirmar_datos()
         
     guardar_datos()  
