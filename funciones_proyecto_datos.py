@@ -2,9 +2,7 @@ import string
 import json
 
 #VARIABLES GLOBALES:
-datos_lista_raw = []
 datos_lista = {}
-condiciones_ciclo = False
 usuario = ""
 nombre = ""
 apellido = ""
@@ -19,8 +17,11 @@ ruta_json = "archivo_proyecto_datos_json.json"
 def adquirir_datos_txt():  
     #Abre el archivo en modo READ y guarda su informacion (linea por linea) en una variable.
     archivo_completo = []
-    with open(ruta_txt, "r") as archivo_txt:
-        archivo_completo = archivo_txt.readlines()
+    try:
+        with open(ruta_txt, "r") as archivo_txt:
+            archivo_completo = archivo_txt.readlines()
+    except:
+        open(ruta_txt, "w")
 
     #Quita los saltos de linea del archivo.
     archivo_final = []
@@ -60,6 +61,7 @@ def introducir_usuario():
     condiciones_usuario = False
     #Comprueba si la longutud del usuario es mayor que la establecida.
     while condiciones_usuario == False:
+        global usuario
         usuario = raw_input("Escriba su usuario: ")
         if len(usuario) < longuitud_nombre_usuario:
             print "La longuitud del usuario no puede ser menor a {0}.".format(longuitud_nombre_usuario)
@@ -83,6 +85,7 @@ def introducir_usuario():
 def introducir_nombre():
     condiciones_nombre = False    
     while condiciones_nombre == False:
+            global nombre
             nombre = raw_input("Escriba su nombre: ")
             for letra in nombre:
                 if letra in string.digits:
@@ -99,6 +102,7 @@ def introducir_nombre():
 def introducir_apellido():
     condiciones_apellido = False
     while condiciones_apellido == False:
+            global apellido
             apellido = raw_input("Escriba su apellido: ")
             for letra in apellido:
                 if letra in string.digits:
@@ -139,7 +143,8 @@ def check_email(correo):
 def introducir_correo():
     num_arrobas = 0
     condiciones_correo = False
-    while condiciones_correo == False:        
+    while condiciones_correo == False:    
+            global correo    
             correo = raw_input("Escriba su correo: ")
             #Cuenta las "@".
             num_arrobas = correo.count("@")
@@ -166,6 +171,7 @@ def introducir_correo():
 #Introdcir la contrasena junto a sus condiciones.                        
 def introducir_contrasena():
     condiciones_contrasena = False
+    global contrasena
     contrasena = raw_input("Escriba su contrasena: ")
     confirma_contrasena = raw_input("Confirme su contrasena: ")
     while contrasena != confirma_contrasena:
@@ -180,12 +186,13 @@ def introducir_contrasena():
 
 #Introduce los datos en un diccionario.
 def introducir_datos():
+    global datos_lista
     datos_lista[usuario] = "NOMBRE: {0} | APELLIDO: {1} | CORREO: {2} | CONTRASENA: {3}".format(nombre, apellido, correo, contrasena)
     
 
     
 #Confirmar los datos.    
-def confirmar_datos():  
+def confirmar_datos():
     print "Confirme sus datos:"
     print "Usuario:", usuario
     print "Nombre:", nombre
@@ -200,10 +207,8 @@ def confirmar_datos():
             #Introduce los datos en una lista.
             print "Datos introducidos en la base de datos."
             introducir_datos()
-            condiciones_ciclo = True
-            break
+            return True
         elif respuesta == "n":
-            condiciones_ciclo = False
             print "=============="
             break
         else:
@@ -220,8 +225,8 @@ def guardar_datos():
                             "USUARIO: ", usuario,
                             "\nDATOS ASOCIADOS: ", datos_lista[usuario],
                             "\n"))
-    informacion = {"info"}
-    informacion["info"] = [archivo_json] + [datos_lista]
+    #informacion = {"info"}
+    #informacion["info"] = [archivo_json] + [datos_lista]
     
-    with open(ruta_json, "w", indent = 2) as archivo_json:
-        json.dump(informacion, archivo_json)
+    #with open(ruta_json, "w", indent = 2) as archivo_json:
+    #    json.dump(informacion, archivo_json)
