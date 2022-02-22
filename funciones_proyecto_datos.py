@@ -9,8 +9,8 @@ apellido = ""
 correo = ""
 contrasena = ""
 
-ruta_txt = "archivo_proyecto_datos.txt"
-ruta_json = "archivo_proyecto_datos_json.json"
+ruta_txt = "PROYECTO DATOS [python]\\ARCHIVOS [txt, json]\\archivo_proyecto_datos.txt"
+ruta_json = "PROYECTO DATOS [python]\\ARCHIVOS [txt, json]\\archivo_proyecto_datos_json.json"
 
 #FUNCIONES:
 #Adquire los datos del archivo TXT.
@@ -168,19 +168,54 @@ def introducir_correo():
 
 
 
-#Introdcir la contrasena junto a sus condiciones.                        
+#Comprueba si una string contiene numeros.
+def contiene_numeros(string):
+    for letra in string:
+        if letra.isdigit():
+            return True
+    return False
+
+
+
+#Comprueba si una string contiene letras.
+def contiene_letras(string):
+    for letra in string:
+        if letra.isalpha():
+            return True
+    return False
+
+
+
+#Introdcir la contrasena junto a sus condiciones.
 def introducir_contrasena():
     condiciones_contrasena = False
     global contrasena
-    contrasena = raw_input("Escriba su contrasena: ")
+    while condiciones_contrasena == False:
+        contrasena = raw_input("Escriba su contrasena: ")
+        longuitud_contrasena = 5
+        if len(contrasena) < longuitud_contrasena:
+            print "La longuitud de la contrasena no puede ser menor a {0}.".format(longuitud_contrasena)
+            print "=============="
+            
+        elif not contiene_numeros(contrasena):
+            print "La contrasena debe contener numeros."
+            print "=============="
+      
+        elif not contiene_letras(contrasena):
+            print "La contrasena debe contener letras."
+            print "=============="
+        
+        else:
+            condiciones_contrasena = True  
+
     confirma_contrasena = raw_input("Confirme su contrasena: ")
     while contrasena != confirma_contrasena:
         print "=============="
-        print "La constrsena no coincide, por favor vuelva a introducirla."
+        print "La constrasena no coincide, por favor vuelva a introducirla."
         print "=============="
         contrasena = raw_input("Escribe tu contrasena: ")
         confirma_contrasena = raw_input("Confirma tu contrasena: ")
-    print "=============="
+    print "==============" 
 
 
 
@@ -210,7 +245,7 @@ def confirmar_datos():
             return True
         elif respuesta == "n":
             print "=============="
-            break
+            return False
         else:
             print "=============="
             print "No reconozco esa respuesta, por favor vuelva a introducirla."
